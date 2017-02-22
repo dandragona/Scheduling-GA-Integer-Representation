@@ -74,7 +74,7 @@ public class Scheduling extends FitnessFunction{
                 {
                     if (++num_assigned[person_num] > 5)
                     {
-                        X.rawFitness = 0;
+                        X.rawFitness = -20;
                         return;
                     }
                 }   

@@ -1,15 +1,15 @@
 Experiment ID                :scheduling
 Problem Type                 :SC
-Data Input File Name         :NA
+Data Input File Name         :finaldata2.txt
 Number of Runs               :10
-Generations per Run          :200
-Population Size              :100
+Generations per Run          :100
+Population Size              :500
 Selection Method (1)         :2
 Fitness Scaling Type (2)     :0
 Crossover Type (3)           :2
 Crossover Rate (4)           :0.8
 Mutation Type (5)            :2
-Mutation Rate (6)            :0.005
+Mutation Rate (6)            :0.1
 Random Number Seed           :75982
 Number of Genes/Points (7)   :35
 Size of Genes (18)           :1

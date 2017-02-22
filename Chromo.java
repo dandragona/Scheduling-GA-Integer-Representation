@@ -130,7 +130,18 @@ public class Chromo
 				
 				int before = chromolist.get(whichGene);
 				int after = (int)((Math.random()%7)+1);
-				int afterIndex = chromolist.indexOf(after);
+				
+				int whichInstance = (int)(Math.random()%5) + 1;
+				int afterIndex = -1;
+				for(int i=0;i<35;i++)
+				{
+					if(chromolist.get(i) == after)
+					{
+						whichInstance--;
+						if(whichInstance == 0)
+							afterIndex = i;
+					}
+				}
 				
 				chromolist.set(whichGene, after);
 				chromolist.set(afterIndex, before);
@@ -177,21 +188,19 @@ public class Chromo
 
 		case 2:     //  Tournament Selection
 		            // Assuming k value for tournament selection == 2
-		  k = 3;
-		  int bestFitIndex = Integer.MIN_VALUE;
-      		double bestFit = 0.0;
-		  for (int i = 0; i < k; i++)
-		  {
-		      randnum = Search.r.nextDouble();
-		      j = (int)(randnum * Parameters.popSize);
-	        if (bestFitIndex == Integer.MIN_VALUE || Search.member[j].rawFitness > bestFit)
-		      {
-		         bestFitIndex = j;
-		         bestFit = Search.member[j].rawFitness;
-		      }
-		  }
+		  
+		  double tourndifficulty = 0.8;
+		  
+		  randnum = Search.r.nextDouble();
+		  k = (int) (randnum * Parameters.popSize);
+		  randnum = Search.r.nextDouble();
+		  j = (int) (randnum * Parameters.popSize);
 
-		  return bestFitIndex;
+		  if (Search.r.nextDouble() < tourndifficulty)
+		  	return (Search.member[k].rawFitness > Search.member[j].rawFitness) ? k : j;
+		  else 
+		  	return (Search.member[k].rawFitness > Search.member[j].rawFitness) ? j : k;
+
 
 		default:
 			System.out.println("ERROR - No selection method selected");

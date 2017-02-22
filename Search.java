@@ -117,7 +117,7 @@ public class Search {
 		bestOfRunChromo = new Chromo();
 		bestOverAllChromo = new Chromo();
 
-		InputSchedule is = new InputSchedule("testdata2.txt");
+		InputSchedule is = new InputSchedule(Parameters.dataInputFileName);
 		is.read_preferences();
 
 		if (Parameters.minORmax.equals("max")){
@@ -363,6 +363,12 @@ public class Search {
 			problem.doPrintGenes(bestOfRunChromo, summaryOutput);
 
 			System.out.println(R + "\t" + "B" + "\t"+ (int)bestOfRunChromo.rawFitness);
+
+			int total=0;
+			for(int m = 0; m<Parameters.popSize;m++)
+				if(member[m].rawFitness == 0)
+					total++;
+			System.out.println("# of invalid: " + total);
 
 		} //End of a Run
 
